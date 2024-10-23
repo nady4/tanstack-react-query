@@ -3,9 +3,9 @@ import Card from "./Card";
 
 const CardList = ({ users }: { users: User[] }) => {
   return (
-    <div>
+    <div className="flex flex-wrap justify-center">
       {users.map((user) => {
-        return <Card user={user} />;
+        return <Card key={user.id} user={user} />;
       })}
     </div>
   );

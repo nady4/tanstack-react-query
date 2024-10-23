@@ -1,24 +1,19 @@
 interface User {
   id: number;
-  name: string;
+  firstName: string;
+  lastName: string;
   username: string;
   email: string;
+  phone: string;
   address: {
-    street: string;
-    suite: string;
+    address: string;
+    state: string;
     city: string;
-    zipcode: string;
-    geo: {
+    postalCode: string;
+    coordinates: {
       lat: string;
       lng: string;
     };
-  };
-  phone: string;
-  website: string;
-  company: {
-    name: string;
-    catchPhrase: string;
-    bs: string;
   };
 }
 

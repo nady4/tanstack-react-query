@@ -2,7 +2,7 @@
 
 ## Description
 
-🤖 API-generated users search web application
+👩🏻‍💻 TypeScript web app that uses Tanstack Query for data fetching, TailwindCSS for styling, and features user search and pagination.
 
 ---
 
@@ -20,19 +20,21 @@
 
 🛠 **Frameworks/Libraries:**
 
+- Tailwindcss
 - React
+- Tanstack Query
 
 🧰 **Tools:**
 
 - Visual Studio Code
 - Git
-- NPM
+- Vite
 
 ---
 
 ## APIs consumed
 
-🔰 https://jsonplaceholder.typicode.com/users
+🔰 https://dummyjson.com/docs/users
 
 🔰 https://robohash.org/
 
