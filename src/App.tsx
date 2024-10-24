@@ -7,8 +7,7 @@ import "./App.css";
 
 function App() {
   const [searchfield, setSearchfield] = useState("");
-  const { data, error, fetchNextPage, hasNextPage, isFetchingNextPage } =
-    useFetchUsers();
+  const { data, error, fetchNextPage, isFetchingNextPage } = useFetchUsers();
 
   const users = data?.pages.flatMap((page) => page.users) ?? [];
   const filteredUsers = useFilterUsers(users, searchfield);
@@ -22,14 +21,10 @@ function App() {
       <h1 className="text-3xl font-mono text-center my-4">🤖 Robots 🤖</h1>
       <button
         className="font-mono w-32 border-2 mb-4 hover:bg-fuchsia-300 hover:scale-105 focus:scale-95 focus:bg-fuchsia-400 focus:text-md rounded-md"
-        disabled={!hasNextPage || isFetchingNextPage}
+        disabled={isFetchingNextPage}
         onClick={() => fetchNextPage()}
       >
-        {isFetchingNextPage
-          ? "Loading..."
-          : hasNextPage
-          ? "Load More"
-          : "No More Data"}
+        {isFetchingNextPage ? "Loading..." : "Load More"}
       </button>
       {error && <div className="text-red-500 mb-4">{error.message}</div>}
       <SearchBox searchChange={onSearchChange} />
