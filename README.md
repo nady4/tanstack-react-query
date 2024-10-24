@@ -20,7 +20,7 @@
 
 🛠 **Frameworks/Libraries:**
 
-- Tailwindcss
+- TailwindCSS
 - React
 - Tanstack Query
 
