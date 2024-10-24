@@ -17,4 +17,11 @@ interface User {
   };
 }
 
-export { User };
+interface UsersResponse {
+  users: User[];
+  total: number;
+  skip: number;
+  limit: number;
+}
+
+export { User, UsersResponse };

@@ -5,9 +5,11 @@ const useFilterUsers = (users: User[], searchfield: string) => {
   const [filteredUsers, setFilteredUsers] = useState<User[]>([]);
 
   useEffect(() => {
-    const filtered = users.filter((user) => {
-      return user.firstName.toLowerCase().includes(searchfield.toLowerCase());
-    });
+    const filtered = users
+      .filter((user) =>
+        user.firstName.toLowerCase().includes(searchfield.toLowerCase())
+      )
+      .sort((a, b) => a.firstName.localeCompare(b.firstName));
     setFilteredUsers(filtered);
   }, [users, searchfield]);
 

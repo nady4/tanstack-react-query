@@ -1,39 +1,28 @@
-import { useState, useEffect } from "react";
-import { User } from "../../types.d";
+import { useInfiniteQuery } from "@tanstack/react-query";
+import { UsersResponse } from "../../types.d";
 
-const useFetchUsers = (page: number): [User[], boolean, string | null] => {
-  const [users, setUsers] = useState<User[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+const fetchUsersPage = async ({ pageParam = 0 }): Promise<UsersResponse> => {
+  const response = await fetch(
+    `https://dummyjson.com/users?limit=10&skip=${pageParam}&select=firstName,lastName,username,email,phone,address`
+  );
 
-  useEffect(() => {
-    setIsLoading(true);
-    setError(null);
+  if (!response.ok) {
+    throw new Error("Failed to fetch users");
+  }
 
-    fetch(
-      `https://dummyjson.com/users?limit=10&skip=${
-        (page - 1) * 10
-      }&select=firstName,lastName,username,email,phone,address`
-    )
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Failed to fetch users");
-        }
-        return response.json();
-      })
-      .then((data) => {
-        setUsers((prevUsers) =>
-          page === 1 ? data.users : [...prevUsers, ...data.users]
-        );
-        setIsLoading(false);
-      })
-      .catch((err) => {
-        setError(err.message);
-        setIsLoading(false);
-      });
-  }, [page]);
-
-  return [users, isLoading, error];
+  return response.json();
 };
 
-export default useFetchUsers;
+const useInfiniteUsers = () => {
+  return useInfiniteQuery({
+    queryKey: ["users"],
+    queryFn: fetchUsersPage,
+    getNextPageParam: (lastPage, allPages) => {
+      const nextSkip = allPages.length * 10;
+      return nextSkip < lastPage.total ? nextSkip : undefined;
+    },
+    initialPageParam: 0,
+  });
+};
+
+export default useInfiniteUsers;
