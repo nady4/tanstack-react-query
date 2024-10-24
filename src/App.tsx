@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState } from "react";
 import SearchBox from "./components/SearchBox";
 import CardList from "./components/CardList";
 import useFetchUsers from "./hooks/useFetchUsers";
@@ -8,16 +8,8 @@ import "./App.css";
 function App() {
   const [searchfield, setSearchfield] = useState("");
   const { data, error, fetchNextPage, isFetchingNextPage } = useFetchUsers();
-
-  const users = useMemo(
-    () => data?.pages.flatMap((page) => page.users) ?? [],
-    [data]
-  );
-
-  const filteredUsers = useMemo(
-    () => filterUsers(users, searchfield),
-    [users, searchfield]
-  );
+  const users = data?.pages.flatMap((page) => page.users) ?? [];
+  const filteredUsers = filterUsers(users, searchfield);
 
   const onSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchfield(event.target.value);
