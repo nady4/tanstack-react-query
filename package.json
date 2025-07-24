@@ -5,6 +5,7 @@
   "homepage": "https://github.com/nady4/robots",
   "type": "module",
   "scripts": {
+    "start": "serve dist",
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint . .js,.jsx,.ts,.tsx",
