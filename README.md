@@ -1,4 +1,4 @@
-# 🤖 Tanstack React-query
+# 🤖 Tanstack react-query
 TypeScript web app that uses Tanstack Query for data fetching, TailwindCSS for styling, and features user search and pagination.
 
 <br>
