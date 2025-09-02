@@ -1,8 +1,8 @@
 {
-  "name": "robots",
+  "name": "tanstack-react-query",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://github.com/nady4/robots",
+  "homepage": "https://github.com/nady4/tanstack-react-query",
   "type": "module",
   "scripts": {
     "start": "serve dist",
