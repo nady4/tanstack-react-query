@@ -1,4 +1,4 @@
-# Robots
+# 🤖 Tanstack React-query
 
 ## Description
 
@@ -20,9 +20,9 @@
 
 🛠 **Frameworks/Libraries:**
 
-- TailwindCSS
 - React
 - Tanstack Query
+- TailwindCSS
 
 🧰 **Tools:**
 
